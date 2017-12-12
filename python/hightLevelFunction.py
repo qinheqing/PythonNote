@@ -47,4 +47,7 @@ print map(upper_frist,names)
 # 2.0 python中的reduce()函数，也是python内置的高阶函数，reduce()函数接受的参数和map()类似，也是函数f,和一个list,其操作不一样：
 # reduce()函数传入的参数中f函数的入参必须接受两个参数
 
+# reduce()函数其实是对与map()函数的补充，传入两个参数，进行迭代式的对list元素进行操作
+
+
 
