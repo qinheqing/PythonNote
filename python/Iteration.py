@@ -104,3 +104,35 @@ print [str(a)+str(b)+str(c) for a in range(1,10) for b in range(0,10) for c in r
 
 # 数字版本
 print [x for x in range(100,1000) if x/100 ==x%10]
+
+# python中的内置函数sorted()函数可以对list进行排序：
+print sorted([1,3,5,4,6,2,8])
+
+# sorted() 也是一个高阶函数，它可以接受一个比较函数来实现自定义排序，比较函数的定义是：传入两个待比较的元素x,y;如果x排在y前面，返回-1
+# 如果x应该排在y的后面，返回的是1，如果x和y相等，返回0
+
+# 是实现一个倒叙排列的函数：
+def reverse_cmp(x,y):
+    if x > y:
+        return -1
+    elif x < y:
+        return 1
+    else:
+        return 0
+
+print sorted([1,3,5,7,4,3],reverse_cmp)
+
+# sorted()如果不传入函数，默认对传入的两个值，根据ASCII大小进行编码比较大小
+# sorted()对字符串进行排序：
+print sorted(['bob','ara','paii','sex'])
+
+# 对字符串排序时，有时候忽略大小写排序更符合习惯。请利用sorted()高阶函数，实现忽略大小写排序的算法。
+def cmp_ignore_case(s1, s2):
+    if s1.lower() > s2.lower():
+        return 1
+    elif s1.lower() < s2.lower():
+       return -1
+    return 0
+
+print sorted(['bob', 'about', 'Zoo', 'Credit'], cmp_ignore_case)
+
