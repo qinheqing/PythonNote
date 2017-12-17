@@ -23,3 +23,15 @@ def calc_sum1(llst):
 
 f = calc_sum1([1,3,45,6,8,9])
 print f()
+
+def calc_prod(lst):
+    def lazy_calc_prod():
+        def prod(x,y):
+            return x*y
+        return reduce(prod,lst)
+    return lazy_calc_prod
+
+print calc_prod([12,34,56,3,9])
+print calc_prod([1,2,2,3,4])()
+
+# 总结；使用python中的函数返回函数，需要构造返回的函数，通过定义返回的函数进行对值进行操作
