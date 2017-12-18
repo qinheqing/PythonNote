@@ -22,4 +22,4 @@ try:
 Except ImportError:
     from StringIO import StringIO
 
-
+# 安装第三方模块，通常使用python自带的官方管理工具，pip(2.7.9内置的包管理工具)
