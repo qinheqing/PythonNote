@@ -103,6 +103,28 @@ print p2.get_grade()
 # ERROR: AttributeError: 'Person' object has no attribute 'get_grade'
 # 因为p2实例并没有绑定get_grade
 
+# python中定义类方法和实例方法：
+# 在class定义的都是实例方法，实例方法第一个参数都是实例本身self
+class Humen(object):
+    count = 0
+    @classmethod                # 通过标记@classmethod,将方法绑定到Human上，而区别与实例方法
+    def how_many(cls):
+        return cls.count
+    def __init__(self,name):
+        self.name = name
+        Humen.count = Humen.count + 1
+
+print Humen.how_many()
+h1 = Humen('haha...')
+print Humen.how_many()
+
+# 因为是在类上调用，而非实例上调用，因此类方法无法获得任何实例变量，只能获得类的引用。
+
+
+
+
+
+
 
 
 
