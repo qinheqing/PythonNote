@@ -1,0 +1,10 @@
+# 一个手机号对应一个证件信息
+begin
+[
+	{"mobile":"13771889921","cardType":"006","cardNo":"452225199203174618","tempSystemsource":"003"},
+	{"mobile":"13771889921","cardType":"006","cardNo":"452225199203174618","tempSystemsource":"003"},
+	{"mobile":"13771889921","cardType":"006","cardNo":"452225199203174618","tempSystemsource":"003"},
+	{"mobile":"13771889921","cardType":"006","cardNo":"452225199203174618","tempSystemsource":"003"},
+	{"mobile":"13771889921","cardType":"006","cardNo":"452225199203174618","tempSystemsource":"003"}
+]
+end
