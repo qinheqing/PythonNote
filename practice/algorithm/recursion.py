@@ -10,6 +10,69 @@ def fun_resursion(n):
 		return 1
 	return n * fun_resursion(n - 1)
 
+# 理论优化一、
+# 我们在程序中递归的调用每次都需要调用自己，这种行为在计算机中是需要依赖内存结构中的栈数据结构的，
+# 每次调用都会压入栈中，如果计算量大，函数调用需要的内存可能会炒出物理内存，发生溢出错误，解决这样问题的方法：
+# 通过尾递归优化，事实上，尾递归和循环的效果是一样的，所以可以把循环看做是一种特殊的尾递归函数
+def fact(n):
+    return fact_iter(n, 1)
+
+def fact_iter(num, product):
+    if num == 1:
+        return product
+    return fact_iter(num - 1, num * product)
+
+# 计算fact(5)
+===> fact_iter(5, 1)
+===> fact_iter(4, 5)
+===> fact_iter(3, 20)
+===> fact_iter(2, 60)
+===> fact_iter(1, 120)
+===> 120
+
+# 尾递归调用时，如果做了优化，栈不会增长，因此，无论多少次调用也不会导致栈溢出。但是大部分程序并没有对
+# 尾递归进行优化，python也没有，使用尾递归也一样会发生溢出
+
+# 优化二：
+# 通过查看递归，可以看到许多是被重复计算的数据，可以把每次计算的结果进行保存到hash表中，下次直接获取
+# 避免多次重复计算，减少时间复杂度的同时也能减少空间复杂度，这种算法可以成为备忘录算法
+def fun_resursion(n):
+	noteDict = {}
+	if n == 1:
+		return 1
+	else:
+		if noteDict.has_key(n):
+			return noteDict[n]
+		else:
+			value = n * fun_resursion(n - 1)
+			noteDict[n] = value
+			return value
+
+# 通过记住值，所有值只计算一次，时间复杂度变为了n
+
+# 优化二、通过自底向上的迭代方式进行逆向计算，观察计算过程：
+# f(1) = 1
+# f(2) = 2 * f(1)   # 此次计算需要依赖的是上一次f(1)的结果
+# f(3) = 3 * f(2)	# 此次计算需要依赖的是上一次f(2)的结果      
+# f(4) = 4 * f(3)	# ...
+# f(5) = 5 * f(4)	# ...
+# f(6) = 6 * f(5)	# 依次类推，我们可以简化内存的使用
+# f(7) = 7 * f(6)
+def fun_resursion(n):
+	temp = 0
+	if n == 1:
+		return 1
+	else:
+		if noteDict.has_key(n):
+			return noteDict[n]
+		else:
+			value = n * fun_resursion(n - 1)
+			noteDict[n] = value
+			return value
+
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # 经典的递归解决问题方案
 # 汉诺塔问题是递归函数的经典应用，它来自一个古老传说：
 # 
@@ -73,4 +136,4 @@ def up_step(n):
 # 我们可以得知f(1) = 1，f(2) = 2  ---f(1)和f(2)是问题的边界
 # 我们也可得知f(n) = f(n-1) + f(n-2) ---此为阶段和阶段之间的（状态转移方程）
 
-# 而此时使用递归的方式进行数据的计算，那么
+# 而此时使用递归的方式进行数据的计算，那么其实
