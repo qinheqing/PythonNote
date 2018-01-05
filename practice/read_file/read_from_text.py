@@ -4,8 +4,8 @@
 import time,json
 
 # open函数读取在使用相对位置的时候，需要特别注意，其相对的位置是根据不同的编译器的设置而不同的
-# 
-
+# 1. 在使用需要在字符中使用特殊字符时，python用反斜杠’\’转义字符，所以错误案例中的’\’被用作转义，导致解释器解释文件路径错误。
+# 2.在使用相对路径的时候，也需要注意坑
 def getInfoFromFile():
 	file = open("source.txt")
 	lines = file.readlines()
