@@ -3,8 +3,11 @@
 # autor qinheqing
 import time,json
 
-def getInfoFromFile(url):
-	file = open(url)
+# open函数读取在使用相对位置的时候，需要特别注意，其相对的位置是根据不同的编译器的设置而不同的
+# 
+
+def getInfoFromFile():
+	file = open("source.txt")
 	lines = file.readlines()
 	text = ''
 	for line in lines:
@@ -25,5 +28,5 @@ def getNextId(t=None):
 	return '%s%013d' %('201712',int(t*1000))   # 当前时间的15位和uuid之后加上000作为用户的userId
 
 print getNextId()
-getInfoFromFile('source.txt')
+getInfoFromFile()
 
