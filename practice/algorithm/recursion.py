@@ -58,17 +58,24 @@ def fun_resursion(n):
 # f(5) = 5 * f(4)	# ...
 # f(6) = 6 * f(5)	# 依次类推，我们可以简化内存的使用
 # f(7) = 7 * f(6)
+# .......
+# 
+# 通过以上的思想，我们可以观察到，在递归的不断迭代过程中，每次迭代计算中，只需要依赖本次迭代的上几次（有限的次数）
+# 的计算结果，这样我们只需要每次计算的结果保留到下几次就可以，不需要像备忘录模式那样需要保存所有计算结果
+# 
 def fun_resursion(n):
-	temp = 0
-	if n == 1:
+	if n < 0:
+		return 0
+	elif n == 1:
 		return 1
-	else:
-		if noteDict.has_key(n):
-			return noteDict[n]
-		else:
-			value = n * fun_resursion(n - 1)
-			noteDict[n] = value
-			return value
+	a = 1
+	temp = 0
+	while n > 1:
+		temp = n * a
+		a = temp
+		n = n-1
+	return temp
+
 
 
 
