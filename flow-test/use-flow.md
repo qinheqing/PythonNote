@@ -8,7 +8,7 @@
 在项目中设置 git-flow
 	1. 当你想把你的项目 “切换” 到 git-flow 上后，Git 还是可以像往常一样工作的，git-flow类似于git的扩展，对原来的git 命令进行组合，形成一套流程规范
 	2. 在项目使用git-flow,首先进行初始化
-	3. 使用命令git flow init 进行初始化
+	3. 使用命令git flow init 进行初始化新·
 	
 分支的模式
 	1. 完成初始化之后，git-flow 模式会预设两个主分支在仓库中：
